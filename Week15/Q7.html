@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <style>
+        body{
+            font-size: medium;
+        }
+        div{
+            margin:20px;
+            display:flex;
+            gap:10px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <input id = "searchText" type="text" placeholder="Search for the items" name="name" required>
+        <label for="list">Results</label>
+    </div>
+    <ul id="listVal">
+    </ul>
+  
+</body>
+
+<script>
+    var searchText = document.getElementById("searchText");
+    const array=["HTML","CSS","Tailwind CSS","GitHub","Javascript"]
+    searchText.addEventListener("input", function(){
+    var list = document.getElementById("listVal");
+    var value = this.value.toLowerCase();
+
+    removeAllLis(list)
+   
+    items = list.getElementsByTagName("li");
+    if(value != "")
+    {
+        var array1 = createArray(items)
+        
+        for (let index = 0; index < array.length; index++)
+        {
+            if( array[index].toLowerCase().includes(value) && !array1.includes(array[index].toLowerCase()))
+            {
+                var li = document.createElement("li");
+                li.appendChild(document.createTextNode(array[index]));
+                list.appendChild(li);
+            }                 
+        }
+    }   
+});
+
+function createArray(items){
+    var array =  new Array() ;
+        for (let index = 0; index < items.length; index++)
+        {
+            array.push( items[index].textContent.toLowerCase());
+        }
+        return array;
+}
+
+function removeAllLis(list)
+{
+    items = list.getElementsByTagName("li");
+    if(items.length>0 )
+    {
+        var liArray= Array.from(items)
+        for (let index = 0; index < liArray.length; index++) {
+            list.removeChild(liArray[index]);
+            
+        }
+    }
+}
+</script>
+</html>

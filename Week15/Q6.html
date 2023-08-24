@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programming Languages</title>
+    <style>
+        .section{
+            display:flex;
+            gap:10px;
+        }
+        h3{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h3>Programmming Languages:</h3>
+    <div class = "section">
+        <label for="lang-select">Which is your favourite Programming Languages:</label>
+        <select name="langs" id="lang-select">
+        </select>
+    </div>
+</body>
+<script>
+        var list = document.getElementById("lang-select");
+        const array=["Javascript","Java","Python","C++"]
+        for (let index = 0; index < array.length; index++) {
+        var option = document.createElement("option");
+        option.text = array[index];
+        list.add(option);
+        
+    }
+</script>
+</html>
