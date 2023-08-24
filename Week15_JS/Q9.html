@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Page</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  .container {
+    padding: 20px;
+    margin-top: 30px;
+
+  }
+
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  #status {
+    font-size: 18px;
+    margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <button id="loginButton">Login</button>
+  <button id="logoutButton">Logout</button>
+  <h2 id="status">User Has Not Logged In</h2>
+</div>
+
+<script>
+  const loginButton = document.getElementById("loginButton");
+  const logoutButton = document.getElementById("logoutButton");
+  const statusText = document.getElementById("status");
+
+  // Check initial authentication status
+  updateStatus();
+
+  // Login button click event
+  loginButton.addEventListener("click", () => {
+    localStorage.setItem("isLoggedIn", true);
+    updateStatus();
+  });
+
+  // Logout button click event
+  logoutButton.addEventListener("click", () => {
+    localStorage.removeItem("isLoggedIn");
+    updateStatus();
+  });
+
+  // Update the user status text based on localStorage
+  function updateStatus() {
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    if (isLoggedIn) {
+      statusText.textContent = "User Is Logged In";
+    } else {
+      statusText.textContent = "User Has Not Logged In";
+    }
+  }
+</script>
+</body>
+</html>

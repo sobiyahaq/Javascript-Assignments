@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toggle Color</title>
+    <style>
+
+        body{
+            background-color:white;
+        }
+        .container
+        {
+            display:flex;
+            flex-direction: column;
+            margin:10px;
+            gap:30px;
+    
+        }
+        span{
+            font-size: 30px;
+            font-weight: bold;
+        }
+        button{
+            width:110px;
+            height:30px;
+        }
+    </style>
+</head>
+<body>
+    <div class = "container">
+        <div id = "text">
+            <span >This is&nbsp;</span> <span id="theme">Light</span> <span>&nbsp;Mode</span>
+        </div>
+        <button id = "toggle">Toggle Theme</button>
+    </div>
+    
+</body>
+
+<script>
+    var heading = document.getElementById("theme")
+    var button = document.getElementById("toggle")
+    var div = document.getElementById("text")
+    var span = document.getElementById("theme")
+    var body = document.body
+    var newColor = ""
+    button.addEventListener("click", function(){
+        if(newColor=="" ||  newColor=="white")
+        {
+            newColor="black"
+            div.style.color = "white"
+            span.textContent = "Dark"
+            body.style.backgroundColor = newColor
+        }
+        else{
+            newColor="white"
+            div.style.color = "black";
+            span.textContent = "Light"
+            body.style.backgroundColor = newColor
+        }       
+    });
+</script>
+</html>
